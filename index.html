@@ -1,30 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>conversor</title>
 </head>
 <body>
-    
-     <h1>Conversor de unidades</h1>
-    <select onchange="convertir()" name="desde" id="desde">
-        <option value="100">cm</option>
-        <option value="1">m</option>
-        <option value="1000">km</option>
-    </select>
-     <input onchange="convertir()" type="number" id="unidad">
-<select onchange="convertir()" name="hacia" id="hacia">
-        <option value="100">cm</option>
-        <option value="1">m</option>
-        <option value="1000">km</option>
-    </select>
-     <p id="resultado"></p> 
-     <script type="text/javascript">
-        function convertir() {
-        
-        }
-     </script>
-     </body>
-    
+  <h2>conversor de unidades</h2>
+  <input type="number" id="coso1" oninput="convertir()">
+  <select id="coso2" onchange="convertir()">
+    <option value="km">kilometro</option>
+    <option value="m">metro</option>
+    <option value="cm">centimetro</option>
+  </select>
+  <select id="coso3" onchange="convertir()">
+    <option value="m">metro</option>
+    <option value="km">kilometro</option>
+    <option value="cm">centimetro</option>
+  </select>
+  <p id="resultado"></p>
+
+  <script>
+    function convertir() {
+      let v = document.getElementById("coso1").value;
+      let de = document.getElementById("coso2").value;
+      let a = document.getElementById("coso3").value;
+      let res = 0;
+      if (v === "") {
+        document.getElementById("resultado").innerText = "";
+        return;
+      }
+      v = Number(v);
+      let metros = 0;
+      if (de === "km") {
+        metros = v * 1000;
+      } else if (de === "m") {
+        metros = v;
+      } else if (de === "cm") {
+        metros = v / 100;
+      }
+      if (a === "km") {
+        res = metros / 1000;
+      } else if (a === "m") {
+        res = metros;
+      } else if (a === "cm") {
+        res = metros * 100;
+      }
+      document.getElementById("resultado").innerText = res;
+    }
+  </script>
+</body>
 </html>
